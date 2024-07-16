@@ -1,4 +1,3 @@
-//Sergio Rolando Inestroza Amaya 20182002621
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,14 +10,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Login',
+      home: const MyHomePage(
+        title: 'Login'
+        ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
   final String title;
 
   @override
@@ -26,10 +27,15 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: Text('Log In')
+          ),
+      ),
+      
     );
   }
 }
