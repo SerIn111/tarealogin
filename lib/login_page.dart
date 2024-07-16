@@ -4,9 +4,7 @@ import 'package:tarealogin/widgets/custom_form_login.dart';
 class LogInPage extends StatelessWidget {
   LogInPage({super.key});
 
-  final nombreController = TextEditingController();
   final correoController = TextEditingController();
-  final telefonoController = TextEditingController();
   final contraseniaController = TextEditingController();
 
   //el controlador del Form
@@ -17,7 +15,7 @@ class LogInPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text('Log In')),
+          child: Text('Inicia Sesion')),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -26,31 +24,23 @@ class LogInPage extends StatelessWidget {
           child: Column(
             children: [
               CustomFormInput(
-                label: 'Nombre',
-                controller: nombreController,
-                validator: (valor) {
-                  if (valor == null || valor.isEmpty) {
-                    return 'El nombre es obligatorio';
-                  }
-
-                  if (valor.length < 3) {
-                    return 'El nombre debe tener al menos 3 caracteres';
-                  }
-
-                  return null;
-                },
-              ),
-              CustomFormInput(
                 controller: correoController,
                 label: 'Correo',
-              ),
-              CustomFormInput(
-                controller: telefonoController,
-                label: 'Telefono',
+                hintText: 'Introduzca el correo',
+                icono: Icon(Icons.mail),
+                validator: (valor){
+                  if (valor==null)
+                  {
+                    return 'El correo es obligatoio';
+                  }
+                },
+
               ),
               CustomFormInput(
                 controller: contraseniaController,
                 label: 'Contraseña',
+                hintText: 'Introduzca la contraseña',
+                icono: Icon(Icons.password),
               ),
             ],
           ),
@@ -62,9 +52,7 @@ class LogInPage extends StatelessWidget {
           if (!formkey.currentState!.validate()) return;
 
           final datos = {
-            'nombre': nombreController.text,
             'correo': correoController.text,
-            'telefono': telefonoController.text,
             'contrasenia': contraseniaController.text,
           };
 
