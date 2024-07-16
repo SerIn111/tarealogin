@@ -27,7 +27,7 @@ class LogInPage extends StatelessWidget {
                 controller: correoController,
                 label: 'Correo',
                 hintText: 'Introduzca el correo',
-                icono: Icon(Icons.mail),
+                preicono: Icon(Icons.mail),
                 validator: (valor){
                   if (valor==null)
                   {
@@ -40,7 +40,11 @@ class LogInPage extends StatelessWidget {
                 controller: contraseniaController,
                 label: 'Contraseña',
                 hintText: 'Introduzca la contraseña',
-                icono: Icon(Icons.password),
+                preicono: Icon(Icons.password),
+                suicono: Padding(
+                  padding: const EdgeInsetsDirectional.only(end: 12.0),
+                  child: Icon(Icons.remove_red_eye  ),
+                ),
               ),
             ],
           ),

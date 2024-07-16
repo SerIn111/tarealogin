@@ -7,14 +7,16 @@ class CustomFormInput extends StatelessWidget {
     required this.controller,
     this.validator,
     required this.hintText,
-    this.icono,
+    this.preicono,
+    this.suicono,
   });
 
   final String label;
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final String? hintText;
-  final Icon? icono;
+  final Widget? preicono;
+  final Widget? suicono;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,8 @@ class CustomFormInput extends StatelessWidget {
         // suffix: Icon(Icons.person),
         errorText: null, //'El nombre es obligatorio',
         // suffixIcon: Icon(Icons.remove_red_eye),
-        prefixIcon: icono,
+        prefixIcon: preicono,
+        suffixIcon: suicono,
         
       ),
       // decoration: InputDecoration(
