@@ -55,14 +55,14 @@ class _LogInPageState extends State<LogInPage> {
                 preicono: Icon(Icons.password),
                 suicono: Padding(
                   padding: EdgeInsetsDirectional.only(end: 12.0),
-                  child: ElevatedButton(
+                  child: IconButton(
                     onPressed: (){
                       Icon(Icons.remove_red_eye);
                       setState(() {
                         
                       });
                     }, 
-                    child: Icon(Icons.remove_red_eye_outlined),
+                    icon: Icon(Icons.remove_red_eye_outlined),
                     ),
                 ),
                 validator: (valor){
@@ -78,7 +78,7 @@ class _LogInPageState extends State<LogInPage> {
                 },
                 
               ),
-              FloatingActionButton(
+              OutlinedButton(
                 child: Text(
                   'Iniciar sesion', 
                   style: TextStyle(
