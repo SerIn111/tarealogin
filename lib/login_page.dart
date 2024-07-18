@@ -1,12 +1,19 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:tarealogin/widgets/custom_form_login.dart';
 
-class LogInPage extends StatelessWidget {
+class LogInPage extends StatefulWidget {
   LogInPage({super.key});
 
-  final correoController = TextEditingController();
-  final contraseniaController = TextEditingController();
+  @override
+  State<LogInPage> createState() => _LogInPageState();
+}
 
+class _LogInPageState extends State<LogInPage> {
+  final correoController = TextEditingController();
+
+  final contraseniaController = TextEditingController();
   //el controlador del Form
   final GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
@@ -29,42 +36,86 @@ class LogInPage extends StatelessWidget {
                 hintText: 'Introduzca el correo',
                 preicono: Icon(Icons.mail),
                 validator: (valor){
-                  if (valor==null)
+                  if (valor=='')
                   {
-                    return 'El correo es obligatoio';
+                    return 'El correo no debe de estar vacio';
+                  }
+                  else if (valor!='sergio.inestroza@unah.hn')
+                  {
+                    return 'El correo es incorrecto';
                   }
                 },
-
+                texto: false,
               ),
               CustomFormInput(
                 controller: contraseniaController,
                 label: 'Contraseña',
                 hintText: 'Introduzca la contraseña',
+                texto: true,
                 preicono: Icon(Icons.password),
                 suicono: Padding(
-                  padding: const EdgeInsetsDirectional.only(end: 12.0),
-                  child: Icon(Icons.remove_red_eye  ),
+                  padding: EdgeInsetsDirectional.only(end: 12.0),
+                  child: ElevatedButton(
+                    onPressed: (){
+                      Icon(Icons.remove_red_eye);
+                      setState(() {
+                        
+                      });
+                    }, 
+                    child: Icon(Icons.remove_red_eye_outlined),
+                    ),
                 ),
+                validator: (valor){
+                  if (valor == '')
+                  {
+                    return 'La contraseña no debe de estar vacia';
+                  }
+                  else if (valor!='20182002621')
+                    {
+                      return 'la contraseña es incorrecta';
+                      
+                    }
+                },
+                
               ),
+              FloatingActionButton(
+                child: Text(
+                  'Iniciar sesion', 
+                  style: TextStyle(
+                    fontSize: 20
+                    ),
+                  ),
+                onPressed: () {
+                  if (!formkey.currentState!.validate()) return;
+
+                  final datos = {
+                    'correo': correoController.text,
+                    'contrasenia': contraseniaController.text,
+                  };
+
+                  print(datos);
+
+                },
+              )
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.save),
-        onPressed: () {
-          if (!formkey.currentState!.validate()) return;
+      // floatingActionButton: FloatingActionButton(
+      //   child: Icon(Icons.save),
+      //   onPressed: () {
+      //     if (!formkey.currentState!.validate()) return;
 
-          final datos = {
-            'correo': correoController.text,
-            'contrasenia': contraseniaController.text,
-          };
+      //     final datos = {
+      //       'correo': correoController.text,
+      //       'contrasenia': contraseniaController.text,
+      //     };
 
-          print(datos);
+      //     print(datos);
 
-          // mandar a guardar
-        },
-      ),
+      //     // mandar a guardar
+      //   },
+      // ),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CustomFormInput extends StatelessWidget {
-  const CustomFormInput({
+  CustomFormInput({
     super.key,
     required this.label,
     required this.controller,
@@ -9,6 +9,7 @@ class CustomFormInput extends StatelessWidget {
     required this.hintText,
     this.preicono,
     this.suicono,
+    required this.texto,
   });
 
   final String label;
@@ -17,6 +18,7 @@ class CustomFormInput extends StatelessWidget {
   final String? hintText;
   final Widget? preicono;
   final Widget? suicono;
+  final bool texto;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class CustomFormInput extends StatelessWidget {
       controller: controller,
       validator: validator,
       keyboardType: TextInputType.text,
-      maxLength: 20,
+      maxLength: 30,
       maxLines: 1,
       decoration: InputDecoration(
         hintText: hintText,
@@ -37,6 +39,7 @@ class CustomFormInput extends StatelessWidget {
         suffixIcon: suicono,
         
       ),
+      obscureText: texto,
       // decoration: InputDecoration(
       //   hintText: 'Ingrese su nombre',
       //   label: Text(label),
