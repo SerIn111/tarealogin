@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:tarealogin/widgets/custom_form_login.dart';
 
@@ -58,12 +56,13 @@ class _LogInPageState extends State<LogInPage> {
                   child: IconButton(
                     onPressed: (){
                       Icon(Icons.remove_red_eye);
+                      
                       setState(() {
-                        
+                          
                       });
                     }, 
                     icon: Icon(Icons.remove_red_eye_outlined),
-                    ),
+                  ),
                 ),
                 validator: (valor){
                   if (valor == '')
@@ -96,7 +95,10 @@ class _LogInPageState extends State<LogInPage> {
                   print(datos);
 
                 },
-              )
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Text('¿No tienes cuenta? Registrate'))
             ],
           ),
         ),
